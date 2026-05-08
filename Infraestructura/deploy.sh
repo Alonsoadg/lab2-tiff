@@ -1,17 +1,13 @@
-#!/bin/bash
 
-# =========================
 # VARIABLES PRINCIPALES
-# =========================
 
 REGION="us-east-1"
 AMI_ID="ami-0c02fb55956c7d316"   # Amazon Linux 2
 KEY_NAME="nueva-key"                # Key Pair creada previamente
 MY_IP="$(curl -s ifconfig.me)/32"
 
-# =========================
+
 # CREACION DE VPC
-# =========================
 
 echo "Creando VPC..."
 
@@ -31,9 +27,9 @@ aws ec2 modify-vpc-attribute \
   --vpc-id $VPC_ID \
   --enable-dns-hostnames "{\"Value\":true}"
 
-# =========================
+
 # CREACION DE SUBREDES
-# =========================
+
 
 echo "Creando subred publica..."
 
@@ -62,9 +58,9 @@ aws ec2 modify-subnet-attribute \
   --subnet-id $SUBNET_PUBLIC_ID \
   --map-public-ip-on-launch
 
-# =========================
+
 # INTERNET GATEWAY
-# =========================
+
 
 echo "Creando Internet Gateway..."
 
@@ -76,9 +72,9 @@ aws ec2 attach-internet-gateway \
   --internet-gateway-id $IGW_ID \
   --vpc-id $VPC_ID
 
-# =========================
+
 # TABLA DE RUTEO
-# =========================
+
 
 echo "Configurando tabla de rutas..."
 
@@ -98,9 +94,9 @@ aws ec2 associate-route-table \
   --subnet-id $SUBNET_PUBLIC_ID \
   --route-table-id $RT_ID
 
-# =========================
+
 # SECURITY GROUP
-# =========================
+
 
 echo "Creando Security Group..."
 
@@ -125,9 +121,8 @@ aws ec2 authorize-security-group-ingress \
   --port 22 \
   --cidr $MY_IP
 
-# =========================
+
 # CREACION DE EC2
-# =========================
 
 echo "Lanzando instancia EC2..."
 
@@ -155,9 +150,8 @@ export PUBLIC_IP=$(aws ec2 describe-instances \
 
 echo "IP Publica: $PUBLIC_IP"
 
-# =========================
+
 # CREACION DE VOLUMEN EBS
-# =========================
 
 echo "Creando volumen EBS..."
 
@@ -185,9 +179,6 @@ aws ec2 attach-volume \
 
 echo "Volumen adjuntado correctamente"
 
-# =========================
 # FINAL
-# =========================
-
 echo "Infraestructura creada correctamente"
 echo "Accede desde: http://$PUBLIC_IP"
