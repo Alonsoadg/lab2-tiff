@@ -1,0 +1,21 @@
+{
+  "family": "cafe-del-sur-task",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "256",
+  "memory": "512",
+  "executionRoleArn": "arn:aws:iam::267796055215:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "name": "cafe-del-sur",
+      "image": "267796055215.dkr.ecr.us-east-1.amazonaws.com/cafe-del-sur:1.0",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 80,
+          "protocol": "tcp"
+        }
+      ]
+    }
+  ]
+}
