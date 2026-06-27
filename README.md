@@ -28,3 +28,7 @@ http://localhost:8080
 # NOTA
 
 El DNS del ALB se incluye únicamente como evidencia del despliegue realizado. Los recursos fueron eliminados posteriormente siguiendo las instrucciones del laboratorio para evitar costos.
+
+# Descripción
+
+Este repositorio contiene la configuración para el despliegue automático del sitio web Café del Sur en AWS, utilizando Terraform como herramienta de Infraestructura como Código (IaC). El proyecto garantiza un ciclo de vida completo mediante el aprovisionamiento automatizado y la limpieza de recursos.

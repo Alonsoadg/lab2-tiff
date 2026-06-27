@@ -1,1 +1,7 @@
 *.pem
+# Terraform: Ignorar estados y configuraciones locales
+**/.terraform/*
+**/*.tfstate
+**/*.tfstate.backup
+**/.terraform.lock.hcl
+*.tfvars
