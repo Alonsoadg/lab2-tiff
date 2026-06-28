@@ -23,7 +23,7 @@ docker run --rm -p 8080:80 cafe-del-sur:1.0
 
 # URL
 
-[http://localhost:8080](http://cafe-del-sur-alb-685753372.us-east-1.elb.amazonaws.com/)
+(http://cafe-del-sur-alb-685753372.us-east-1.elb.amazonaws.com/)
 
 # NOTA
 
